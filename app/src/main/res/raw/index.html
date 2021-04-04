@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+        <script>
+      function MsgBox(val){
+        alert(val);
+      }
+
+      function hoge(){
+        var now = new Date();
+        var hour = now.getHours();
+        var min  = now.getMinutes();
+        var sec  = now.getSeconds();
+
+        // JavaScriptããAndroidã¸
+        android.MyMethod(hour + ':' + min + ':' + sec);
+      }
+    </script>
+    </head>
+    <body>
+        Hello Wrld!<br>
+        <br>
+        <input type="button" onclick="hoge();"  value="Javaã®ã¡ã½ãããå®è¡ãã">
+    </body>
+</html>
