@@ -8,6 +8,7 @@ import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -21,10 +22,15 @@ public class MainActivity extends AppCompatActivity {
     // â»JavaScriptãããã®ã¯ã©ã¹ã®ã¡ã½ãããå¼ã³åºã
     private class JavaScriptInterface {
 
+        //private Context c;
+        //public JavaScriptInterface(Context c){
+        //    this.c = c;
+        //}
         @JavascriptInterface
         public void MyMethod(String str) {
-            // ã­ã°ã«åºåãã
-            Log.i("MyTAG",str);
+            Toast toast = Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT);
+            toast.show();
+            Log.i("MyTAG","XX" + str);
         }
     }
 
