@@ -11,9 +11,14 @@
         var hour = now.getHours();
         var min  = now.getMinutes();
         var sec  = now.getSeconds();
-
         // JavaScriptããAndroidã¸
-        android.MyMethod(hour + ':' + min + ':' + sec);
+        //android.MyMethod(hour + ':' + min + ':' + sec);
+        let name = navigator.appName;
+        name += navigator.appCodeName;
+        name += navigator.appVersion;
+        name += navigator.platform;
+        android.MyMethod(name);
+        //android.MyMethod(platform);
       }
     </script>
     </head>

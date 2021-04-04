@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         //}
         @JavascriptInterface
         public void MyMethod(String str) {
-            Toast toast = Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG);
             toast.show();
             Log.i("MyTAG","XX" + str);
         }
