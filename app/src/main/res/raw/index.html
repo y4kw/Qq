@@ -26,5 +26,34 @@
         Hello World!<br>
         <br>
         <input type="button" onclick="hoge();"  value="call Javascript fun">
+        <br>
+        <div id="innerHTMLtxt"></div>
+        <script>
+             ////hoge();
+             //let name = navigator.appName;
+             //name += navigator.appCodeName;
+             //name += navigator.appVersion;
+             //name += navigator.platform;
+             ////android.MyMethod(name);
+             ////MsgBox('djjj');
+             //innerHTMLtxt.innerHTML = name;
+        </script>
+        <div id="innerHere"></div>
+        <script>
+             //let name = "navigator.appName: " + navigator.appName + "\<br>";
+             //name += "navigator.appCodeName: " + navigator.appCodeName "<br>";
+             //name += navigator.appVersion;
+             //name += navigator.platform;
+             //innerHere.innerHTML = name;
+        </script>
+        <script>
+             let name = "navigator.appName: " + navigator.appName + "<br>";
+             name += "navigator.appCodeName: " + navigator.appCodeName + "<br>";
+             name += "navigator.appVersion: " + navigator.appVersion + "<br>";
+             name += "navigator.platform: " + navigator.platform + "<br>";
+             name += "navigator.plugin: " + navigator.plugin + "<br>";
+             name += "navigator.userAgent: " + navigator.userAgent + "<br>";
+            document.write(name);
+        </script>
     </body>
 </html>
