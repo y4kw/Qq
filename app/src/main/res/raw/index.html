@@ -20,9 +20,31 @@
         android.MyMethod(name);
         //android.MyMethod(platform);
       }
+      function test() {
+       //æç»ã³ã³ãã­ã¹ãã®åå¾
+       var canvas = document.getElementById('sample');
+       if (canvas.getContext) {
+         var context = canvas.getContext('2d');
+         //ããã«å·ä½çãªæç»åå®¹ãæå®ãã
+         //å·¦ãã20ä¸ãã40ã®ä½ç½®ã«ãå¹50é«ã100ã®åè§å½¢ãæã
+         context.fillRect(20,40,50,100);
+         //è²ãæå®ãã
+         context.strokeStyle = 'rgb(00,00,255)'; //æ ç·ã®è²ã¯é
+         context.fillStyle = 'rgb(255,00,00)'; //å¡ãã¤ã¶ãã®è²ã¯èµ¤
+         //å·¦ãã200ä¸ãã80ã®ä½ç½®ã«ãå¹100é«ã50ã®åè§ã®æ ç·ãæã
+         context.strokeRect(200,80,100,50);
+         //å·¦ãã150ä¸ãã75ã®ä½ç½®ã«ãåå¾60ã®ååãåæè¨åãï¼å·¦åãï¼ã§æã
+         context.arc(150,75,60,Math.PI*1,Math.PI*2,true);
+         context.fill();
+       }
+    }
     </script>
     </head>
-    <body>
+    <body onLoad="test()">
+        <canvas id="sample">
+
+        </canvas>
+        <br>
         Hello World!<br>
         <br>
         <input type="button" onclick="hoge();"  value="call Javascript fun">
