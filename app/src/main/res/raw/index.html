@@ -38,10 +38,35 @@
          context.fill();
        }
     }
+    function draw() {
+    var canvas = document.getElementById('tutorial');
+    if (canvas.getContext) {
+      var ctx = canvas.getContext('2d');
+      //å¨ä½ã®éæåº¦
+      ctx.globalAlpha = 0.3;
+      //1000åå¦çãããããã
+      for (i = 0; i < 1000; i++) {
+        ctx.beginPath();
+        //ã©ã³ãã ãªè²ãçæ
+        var r = Math.floor(Math.random() * 256);
+        var g = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+        ctx.strokeStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+        //ã©ã³ãã ãªå ´æã«å§ç¹ãç§»å
+        ctx.moveTo(Math.random() * 400, Math.random() * 300);
+        //ã©ã³ãã ãªå ´æã¾ã§ç·ãæã
+        ctx.lineTo(Math.random() * 400, Math.random() * 300);
+        ctx.stroke();
+      }
+    }
+  }
     </script>
     </head>
-    <body onLoad="test()">
+    <body onLoad="test();draw();">
         <canvas id="sample">
+
+        </canvas>
+        <canvas id="tutorial">
 
         </canvas>
         <br>
