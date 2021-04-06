@@ -1,5 +1,6 @@
 package com.example.pp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
 
         // JavaScriptãæå¹ã«ãã
         webView.getSettings().setJavaScriptEnabled(true);
+
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false);
 
         // WebChromeClientãè¨­å®ãã
         // â»ã³ã¬ãè¨­å®ããªãã¨JSã®alertã¯è¡¨ç¤ºãããªã

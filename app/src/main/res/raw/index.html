@@ -3,45 +3,45 @@
         <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
         <script>
               var speedX = 3.0;
-  var speedY = 4.0;
-  var locX = 200;
-  var locY = 150;
-  var ctx;
+              var speedY = 4.0;
+              var locX = 200;
+              var locY = 150;
+              var ctx;
 
-  function init() {
-    var canvas = document.getElementById('tutorial');
-    canvas.width = 360;
-    canvas.height = 300;
-    if (canvas.getContext) {
-      ctx = canvas.getContext('2d');
-      setInterval(draw, 33);
-    }
-  }
+              function init() {
+                var canvas = document.getElementById('tutorial');
+                canvas.width = 360;
+                canvas.height = 300;
+                if (canvas.getContext) {
+                  ctx = canvas.getContext('2d');
+                  setInterval(draw, 33);
+                }
+              }
 
-  function draw() {
-    ctx.globalCompositeOperation = "source-over";
-    ctx.fillStyle = "rgba(8,8,12,.2)";
-    ctx.fillRect(0, 0, 360, 300);
-    ctx.globalCompositeOperation = "lighter";
+              function draw() {
+                ctx.globalCompositeOperation = "source-over";
+                ctx.fillStyle = "rgba(8,8,12,.2)";
+                ctx.fillRect(0, 0, 360, 300);
+                ctx.globalCompositeOperation = "lighter";
 
-    //ä½ç½®ãæ´æ°
-    locX += speedX;
-    locY += speedY;
+                //ä½ç½®ãæ´æ°
+                locX += speedX;
+                locY += speedY;
 
-    if (locX < 0 || locX > 360) {
-      speedX *= -1;
-    }
+                if (locX < 0 || locX > 360) {
+                  speedX *= -1;
+                }
 
-    if (locY < 0 || locY > 300) {
-      speedY *= -1;
-    }
+                if (locY < 0 || locY > 300) {
+                  speedY *= -1;
+                }
 
-    //æ´æ°ããåº§æ¨ã§åãæã
-    ctx.beginPath();
-    ctx.fillStyle = '#3399FF';
-    ctx.arc(locX, locY, 4, 0, Math.PI * 2.0, true);
-    ctx.fill();
-  }
+                //æ´æ°ããåº§æ¨ã§åãæã
+                ctx.beginPath();
+                ctx.fillStyle = '#3399FF';
+                ctx.arc(locX, locY, 4, 0, Math.PI * 2.0, true);
+                ctx.fill();
+              }
         </script>
     </head>
     <body onLoad="init();draw();">
