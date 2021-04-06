@@ -10,7 +10,7 @@
 
   function init() {
     var canvas = document.getElementById('tutorial');
-    canvas.width = 400;
+    canvas.width = 360;
     canvas.height = 300;
     if (canvas.getContext) {
       ctx = canvas.getContext('2d');
@@ -21,14 +21,14 @@
   function draw() {
     ctx.globalCompositeOperation = "source-over";
     ctx.fillStyle = "rgba(8,8,12,.2)";
-    ctx.fillRect(0, 0, 400, 300);
+    ctx.fillRect(0, 0, 360, 300);
     ctx.globalCompositeOperation = "lighter";
 
     //ä½ç½®ãæ´æ°
     locX += speedX;
     locY += speedY;
 
-    if (locX < 0 || locX > 400) {
+    if (locX < 0 || locX > 360) {
       speedX *= -1;
     }
 
@@ -45,7 +45,7 @@
         </script>
     </head>
     <body onLoad="init();draw();">
-        <canvas id="tutorial" width="400 height="300">
+        <canvas id="tutorial" width="360 height="300">
 
         </canvas>
         <br>
