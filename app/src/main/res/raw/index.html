@@ -2,71 +2,50 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
         <script>
-      function MsgBox(val){
-        alert(val);
-      }
+              var speedX = 3.0;
+  var speedY = 4.0;
+  var locX = 200;
+  var locY = 150;
+  var ctx;
 
-      function hoge(){
-        var now = new Date();
-        var hour = now.getHours();
-        var min  = now.getMinutes();
-        var sec  = now.getSeconds();
-        // JavaScriptããAndroidã¸
-        //android.MyMethod(hour + ':' + min + ':' + sec);
-        let name = navigator.appName;
-        name += navigator.appCodeName;
-        name += navigator.appVersion;
-        name += navigator.platform;
-        android.MyMethod(name);
-        //android.MyMethod(platform);
-      }
-      function test() {
-       //æç»ã³ã³ãã­ã¹ãã®åå¾
-       var canvas = document.getElementById('sample');
-       if (canvas.getContext) {
-         var context = canvas.getContext('2d');
-         //ããã«å·ä½çãªæç»åå®¹ãæå®ãã
-         //å·¦ãã20ä¸ãã40ã®ä½ç½®ã«ãå¹50é«ã100ã®åè§å½¢ãæã
-         context.fillRect(20,40,50,100);
-         //è²ãæå®ãã
-         context.strokeStyle = 'rgb(00,00,255)'; //æ ç·ã®è²ã¯é
-         context.fillStyle = 'rgb(255,00,00)'; //å¡ãã¤ã¶ãã®è²ã¯èµ¤
-         //å·¦ãã200ä¸ãã80ã®ä½ç½®ã«ãå¹100é«ã50ã®åè§ã®æ ç·ãæã
-         context.strokeRect(200,80,100,50);
-         //å·¦ãã150ä¸ãã75ã®ä½ç½®ã«ãåå¾60ã®ååãåæè¨åãï¼å·¦åãï¼ã§æã
-         context.arc(150,75,60,Math.PI*1,Math.PI*2,true);
-         context.fill();
-       }
-    }
-    function draw() {
+  function init() {
     var canvas = document.getElementById('tutorial');
+    canvas.width = 400;
+    canvas.height = 300;
     if (canvas.getContext) {
-      var ctx = canvas.getContext('2d');
-      //å¨ä½ã®éæåº¦
-      ctx.globalAlpha = 0.3;
-      //1000åå¦çãããããã
-      for (i = 0; i < 1000; i++) {
-        ctx.beginPath();
-        //ã©ã³ãã ãªè²ãçæ
-        var r = Math.floor(Math.random() * 256);
-        var g = Math.floor(Math.random() * 256);
-        var b = Math.floor(Math.random() * 256);
-        ctx.strokeStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
-        //ã©ã³ãã ãªå ´æã«å§ç¹ãç§»å
-        ctx.moveTo(Math.random() * 400, Math.random() * 300);
-        //ã©ã³ãã ãªå ´æã¾ã§ç·ãæã
-        ctx.lineTo(Math.random() * 400, Math.random() * 300);
-        ctx.stroke();
-      }
+      ctx = canvas.getContext('2d');
+      setInterval(draw, 33);
     }
   }
-    </script>
-    </head>
-    <body onLoad="test();draw();">
-        <canvas id="sample">
 
-        </canvas>
-        <canvas id="tutorial">
+  function draw() {
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = "rgba(8,8,12,.2)";
+    ctx.fillRect(0, 0, 400, 300);
+    ctx.globalCompositeOperation = "lighter";
+
+    //ä½ç½®ãæ´æ°
+    locX += speedX;
+    locY += speedY;
+
+    if (locX < 0 || locX > 400) {
+      speedX *= -1;
+    }
+
+    if (locY < 0 || locY > 300) {
+      speedY *= -1;
+    }
+
+    //æ´æ°ããåº§æ¨ã§åãæã
+    ctx.beginPath();
+    ctx.fillStyle = '#3399FF';
+    ctx.arc(locX, locY, 4, 0, Math.PI * 2.0, true);
+    ctx.fill();
+  }
+        </script>
+    </head>
+    <body onLoad="init();draw();">
+        <canvas id="tutorial" width="400 height="300">
 
         </canvas>
         <br>
