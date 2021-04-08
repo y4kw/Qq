@@ -1,90 +1,58 @@
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-        <script>
-              var speedX = 3.0;
-              var speedY = 4.0;
-              var locX = 200;
-              var locY = 150;
-              var ctx;
-
-              function init() {
-                var canvas = document.getElementById('tutorial');
-                canvas.width = 360;
-                canvas.height = 300;
-                if (canvas.getContext) {
-                  ctx = canvas.getContext('2d');
-                  setInterval(draw, 33);
-                }
-              }
-
-              function draw() {
-                ctx.globalCompositeOperation = "source-over";
-                ctx.fillStyle = "rgba(8,8,12,.2)";
-                ctx.fillRect(0, 0, 360, 300);
-                ctx.globalCompositeOperation = "lighter";
-
-                //ä½ç½®ãæ´æ°
-                locX += speedX;
-                locY += speedY;
-
-                if (locX < 0 || locX > 360) {
-                  speedX *= -1;
-                }
-
-                if (locY < 0 || locY > 300) {
-                  speedY *= -1;
-                }
-
-                //æ´æ°ããåº§æ¨ã§åãæã
-                ctx.beginPath();
-                ctx.fillStyle = '#3399FF';
-                ctx.arc(locX, locY, 4, 0, Math.PI * 2.0, true);
-                ctx.fill();
-              }
-        </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>7-01_geolocation</title>
+        <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
+        <style>
+main section {
+    text-align: center;
+}
+.position {
+    font-size: 1.5rem;
+    color: #ed8a29;
+}
+</style>
     </head>
-    <body onLoad="init();draw();">
-        <canvas id="tutorial" width="360 height="300">
+    <body>
+        <header>
+            <div class="container">
+                <h1>where you are?</h1>
+                <h2>show your location</h2>
+            </div><!-- /.container -->
+        </header>
+        <main>
+            <div class="container">
+                <section>
+                    <p>you are now</p>
+                    <p id="loc" class="position"></p>
+                    <p> with its accuracy<span id="accuracy" class="position"></span> meters.</p>
+                </section>
+            </div><!-- /.container -->
+        </main>
+        <footer>
+            <div class="container">
+                <p>JavaScript Samples</p>
+            </div><!-- /.container -->
+        </footer>
+        <script src="jquery.js"></script>
+        <script>
+'use strict';
 
-        </canvas>
-        <br>
-        Hello World!<br>
-        <br>
-        <input type="button" onclick="hoge();"  value="call Javascript fun">
-        <br>
-        <div id="innerHTMLtxt"></div>
-        <script>
-             ////hoge();
-             //let name = navigator.appName;
-             //name += navigator.appCodeName;
-             //name += navigator.appVersion;
-             //name += navigator.platform;
-             ////android.MyMethod(name);
-             ////MsgBox('djjj');
-             //innerHTMLtxt.innerHTML = name;
-        </script>
-        <div id="innerHere"></div>
-        <script>
-             //let name = "navigator.appName: " + navigator.appName + "\<br>";
-             //name += "navigator.appCodeName: " + navigator.appCodeName "<br>";
-             //name += navigator.appVersion;
-             //name += navigator.platform;
-             //innerHere.innerHTML = name;
-        </script>
-        <script>
-             //let name = 'navigator.appName: ' + navigator.appName + '<br><br>';
-             //name += 'navigator.appCodeName: ' + navigator.appCodeName + '<br><br>';
-             //name += 'navigator.appVersion: ' + navigator.appVersion + '<br><br>';
-             //name += 'navigator.platform: ' + navigator.platform + '<br><br>';
-             //name += 'navigator.plugin: ' + navigator.plugin + '<br><br>';
-             //name += 'navigator.userAgent: ' + navigator.userAgent + '<br><br>';
-             //document.write(name);
-             var str = '';
-             for (var name in navigator) {
-                str += name + ':  ' + navigator[name] + '<br><br>' ;
-                }
-             document.write(str);
-        </script>
+function success(pos) {
+    const lat = pos.coords.latitude;
+    const lng = pos.coords.longitude;
+    const accuracy = pos.coords.accuracy;
+
+    $('#loc').text(`latitude:${lat} longitude:${lng}`);
+    $('#accuracy').text(accuracy);
+}
+
+function fail(error) {
+    alert('error error.code: ' + error.code);
+}
+
+navigator.geolocation.getCurrentPosition(success, fail);
+</script>
     </body>
 </html>

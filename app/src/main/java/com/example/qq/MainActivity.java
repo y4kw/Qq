@@ -1,4 +1,4 @@
-package com.example.pp;
+package com.example.qq;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.GeolocationPermissions;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
         // ãªã½ã¼ã¹ãããã¡ã¤ã«ãçæãã(/data/data/ããã±ã¼ã¸å/files/ã«ä½æ)
         setRawResources(this, R.raw.index, "index.html");
+        setRawResources(this, R.raw.jquery, "jquery.js");
 
         // ã­ã£ãã·ã¥ã¯ãªã¢
         // â»éçºæã®ã¿æå¹ã«ãã
@@ -96,10 +98,20 @@ public class MainActivity extends AppCompatActivity {
 
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(false);
-
+        // HTML5 API flags
+        webView.getSettings().setAppCacheEnabled(true);
+        webView.getSettings().setDatabaseEnabled(true);
+        webView.getSettings().setDomStorageEnabled(true);
         // WebChromeClientãè¨­å®ãã
         // â»ã³ã¬ãè¨­å®ããªãã¨JSã®alertã¯è¡¨ç¤ºãããªã
-        webView.setWebChromeClient(new WebChromeClient());
+        //webView.setWebChromeClient(new WebChromeClient());
+        webView.setWebChromeClient(new WebChromeClient() {
+            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+                callback.invoke(origin, true, false);
+            }
+        });
+
+        ////webView.getSettings().setGeolocationDatabasePath( context.getFilesDir().getPath() );
 
         // JavaScriptInterfaceã®åæè¨­å®
         webView.addJavascriptInterface(new JavaScriptInterface(), "android");
