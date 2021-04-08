@@ -9,6 +9,7 @@ import android.view.View;
 import android.webkit.GeolocationPermissions;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -76,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return result;
     }
-
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(false);
         // HTML5 API flags
+        webView.getSettings().setGeolocationEnabled(true);
         webView.getSettings().setAppCacheEnabled(true);
         webView.getSettings().setDatabaseEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
@@ -133,4 +134,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 }
