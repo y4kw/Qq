@@ -11,6 +11,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -103,10 +104,21 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setAppCacheEnabled(true);
         webView.getSettings().setDatabaseEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
+        webView.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(
+                    WebView view,
+                    String url) {
+                return false;
+            }
+        });
+
+
         // WebChromeClientãè¨­å®ãã
         // â»ã³ã¬ãè¨­å®ããªãã¨JSã®alertã¯è¡¨ç¤ºãããªã
         //webView.setWebChromeClient(new WebChromeClient());
         webView.setWebChromeClient(new WebChromeClient() {
+            @Override
             public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
                 callback.invoke(origin, true, false);
             }

@@ -35,24 +35,25 @@ main section {
                 <p>JavaScript Samples</p>
             </div><!-- /.container -->
         </footer>
-        <script src="jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
         <script>
-'use strict';
+            'use strict';
 
-function success(pos) {
-    const lat = pos.coords.latitude;
-    const lng = pos.coords.longitude;
-    const accuracy = pos.coords.accuracy;
+            function success(pos) {
+                const lat = pos.coords.latitude;
+                const lng = pos.coords.longitude;
+                const accuracy = pos.coords.accuracy;
 
-    $('#loc').text(`latitude:${lat} longitude:${lng}`);
-    $('#accuracy').text(accuracy);
-}
+                $('#loc').text(`latitude:${lat} longitude:${lng}`);
+                $('#accuracy').text(accuracy);
+            }
 
-function fail(error) {
-    alert('error error.code: ' + error.code);
-}
+            function fail(error) {
+                alert('error error.code: ' + error.code);
+            }
 
-navigator.geolocation.getCurrentPosition(success, fail);
-</script>
+            navigator.geolocation.getCurrentPosition(success, fail);
+        </script>
     </body>
 </html>
