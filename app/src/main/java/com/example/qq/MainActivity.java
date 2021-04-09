@@ -113,6 +113,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
         // WebChromeClientãè¨­å®ãã
         // â»ã³ã¬ãè¨­å®ããªãã¨JSã®alertã¯è¡¨ç¤ºãããªã
         //webView.setWebChromeClient(new WebChromeClient());
